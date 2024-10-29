@@ -1,0 +1,33 @@
+class Solution {
+    public ListNode insertionSortList(ListNode head) {
+        // Create an ArrayList to store the values of the linked list
+        ArrayList<Integer> arr = new ArrayList<>();
+        ListNode cur = head; // Pointer to traverse the linked list
+        
+        // If the head is null, return null (the list is empty)
+        if (cur == null) {
+            return null;
+        }
+        
+        // Traverse the linked list and add each value to the ArrayList
+        while (cur != null) {
+            arr.add(cur.val); // Add the current node's value to the array
+            cur = cur.next;   // Move to the next node
+        }
+        
+        // Sort the ArrayList containing the values
+        Collections.sort(arr);
+        
+        // Reset the pointer to the head of the linked list to update values
+        cur = head;
+        
+        // Iterate through the sorted values and update the linked list
+        for (int val : arr) {
+            cur.val = val; // Update the current node's value with the sorted value
+            cur = cur.next; // Move to the next node
+        }
+        
+        // Return the head of the sorted linked list
+        return head;
+    }
+}
